@@ -1,0 +1,32 @@
+# Runtime and per-machine state
+app/.runtime/
+.local/
+.venv/
+.env
+.env.*
+!.env.example
+
+# Local course sources and every generated reproduction of them
+materiali/*
+!materiali/README.md
+app/web/catalog.json
+app/web/snippet-projects.json
+app/web/course-content.json
+app/web/references/
+docs/screenshots/
+
+# Personal exports
+cpp-studio-sessione*.json
+cpp-studio-appunti*.json
+*.code-workspace
+
+# Interpreter, compiler and operating-system output
+__pycache__/
+*.py[cod]
+*.o
+*.so
+*.dylib
+*.dSYM/
+.DS_Store
+.AppleDouble
+*.log

@@ -1,0 +1,3 @@
+# Required only to regenerate course data from PDF sources.
+pypdf==6.10.0
+pdfplumber==0.11.9

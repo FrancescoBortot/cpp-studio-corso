@@ -1,0 +1,85 @@
+{
+ "objcopy:4": [
+  ["FloatArray(unsigned", "Dimensione richiesta", "Il costruttore riceve il numero di elementi; la memoria verrà allocata nell’implementazione."] ,
+  ["float* cont", "Puntatore proprietario", "cont identifica l’array dinamico. Copiare questo membro da solo copia un indirizzo, non gli elementi."]
+ ],
+ "objcopy:5": [
+  ["size() const", "Numero di elementi", "size() osserva la dimensione senza modificare l’oggetto."],
+  ["float& operator[]", "Elemento per riferimento", "Gli overload const e non const scelgono se l’elemento può essere modificato; il risultato non è una copia del float."]
+ ],
+ "objcopy:6": [
+  ["class OutOfRange", "Errore di indice", "Il tipo annidato OutOfRange identifica un accesso non valido; sarà lanciato dall’operatore di accesso."],
+  ["static bool debug", "Flag condiviso", "debug è un membro della classe, condiviso da tutte le istanze; la sua definizione deve essere fornita nel programma."]
+ ],
+ "objcopy:7": [
+  ["eltn(n)", "Memorizza la dimensione", "eltn è inizializzato con n prima di cont perché questo è l’ordine delle dichiarazioni dei membri."],
+  ["cont(new float[eltn])", "Alloca gli elementi", "cont riceve l’indirizzo di eltn float. Con questa forma i loro valori non sono inizializzati a zero."],
+  ["delete[] cont", "Libera l’array", "Il distruttore rilascia l’array. Due copie proprietarie dello stesso indirizzo provocherebbero un doppio rilascio."]
+ ],
+ "objcopy:8": [
+  ["return eltn", "Restituisce la dimensione", "size() restituisce il numero di elementi memorizzato nell’oggetto."],
+  ["return (i<eltn)", "Limite superiore escluso", "L’indice unsigned non è negativo: è sufficiente verificare i < eltn. L’indice eltn è già fuori dall’array."]
+ ],
+ "objcopy:9": [
+  ["if(!checkRange(i))", "Controlla prima dell’accesso", "Se l’indice non è valido, viene lanciata OutOfRange prima di dereferenziare cont[i]."],
+  ["return cont[i]", "Restituisce l’elemento", "La firma restituisce un riferimento: nell’overload non const permette di scrivere a[i] = valore; in quello const consente solo lettura."]
+ ],
+ "objcopy:10": [
+  ["FloatArray a(n)", "Una sola istanza", "Costruisce a con cinque elementi: in questo test non vengono ancora eseguite copie di FloatArray."],
+  ["a[i]=i*3.2", "Scrive tramite operator[]", "L’overload non const restituisce il riferimento all’elemento, che riceve 3.2 volte l’indice."],
+  ["cout << i", "Osserva i valori", "Il secondo ciclo stampa indice e contenuto. La distruzione di a avviene alla fine dello scope di main."]
+ ],
+ "objcopy:11": [
+  ["print(const FloatArray a)", "const non evita la copia", "a è un parametro per valore: viene costruito un oggetto distinto. const vieta di modificarlo, ma non elimina la copia."],
+  ["a[i]", "Lettura dal parametro const", "L’accesso seleziona l’overload const di operator[]. Al ritorno viene distrutto il parametro locale."]
+ ],
+ "objcopy:12": [
+  ["print(a)", "Qui nasce la copia nascosta", "La chiamata costruisce il parametro per valore di print. Con la copia implicita, il puntatore cont viene duplicato come indirizzo."],
+  ["cout << i", "Accesso dopo il ritorno", "Il distruttore del parametro ha già liberato l’array condiviso. Questo successivo accesso usa un puntatore dangling: il comportamento è indefinito."]
+ ],
+ "objcopy:13": [
+  ["print(const FloatArray a)", "Due oggetti, stesso indirizzo", "La copia implicita duplica eltn e cont. Gli oggetti sono distinti, ma entrambi credono di possedere lo stesso array."],
+  ["return;", "Fine del parametro locale", "All’uscita da print si distrugge la copia e viene liberato cont. Il puntatore dell’oggetto chiamante non viene aggiornato."]
+ ],
+ "objcopy:14": [
+  ["FloatArray(const", "Copia inaccessibile", "Nel C++98/03 la dichiarazione privata ostacola le copie dal codice cliente. Non viene fornita una definizione: una chiamata da un contesto autorizzato può fallire al collegamento."],
+  ["operator=", "Anche l’assegnazione", "Occorre considerare insieme costruzione per copia e assegnazione, perché entrambe potrebbero duplicare il puntatore proprietario."]
+ ],
+ "objcopy:15": [
+  ["FloatArray(const", "Divieto esplicito da C++11", "= delete rende l’operazione non utilizzabile, anche da membri e amici. Un suo uso richiede una diagnostica del compilatore."],
+  ["operator=", "Nessuna assegnazione per copia", "L’assegnazione è vietata separatamente dal costruttore di copia: entrambe le dichiarazioni servono a esprimere il contratto."]
+ ],
+ "objcopy:16": [
+  ["FloatArray(const", "Costruisce una copia", "Il riferimento a const evita una copia ricorsiva del parametro. L’implementazione dovrà creare risorse indipendenti."],
+  ["operator=", "Aggiorna un oggetto esistente", "A differenza del costruttore, l’assegnazione deve gestire anche la risorsa già posseduta dalla destinazione."],
+  ["void copy", "Un solo punto di implementazione", "La funzione privata centralizza il lavoro comune alle due operazioni."]
+ ],
+ "objcopy:17": [
+  ["if(cont==a.cont)", "Evita il caso a = a", "Nel modello mostrato, indirizzi uguali riconoscono l’autoassegnazione e impediscono di cancellare i dati che si stanno per leggere."],
+  ["cont=new float", "Nuova memoria indipendente", "La dimensione viene copiata e si alloca un nuovo array. Attenzione: cancellare prima la memoria vecchia rende fragile questa versione se new lancia un’eccezione."],
+  ["while(pl>cont)", "Copia gli elementi a ritroso", "I puntatori partono dalla posizione successiva all’ultimo elemento. --pl e --pr li riportano sull’elemento valido prima di copiare il float."]
+ ],
+ "objcopy:18": [
+  ["cont(nullptr)", "Stato iniziale sicuro", "Nel costruttore di copia, cont parte da nullptr: il delete[] iniziale eseguito da copy() non libera alcun array."],
+  ["copy(a)", "Stessa logica di copia profonda", "copy() alloca la memoria della destinazione e copia gli elementi della sorgente."],
+  ["return *this", "Risultato per riferimento", "La firma restituisce FloatArray&: il commento originale ‘as value’ è impreciso. Si restituisce un riferimento all’oggetto assegnato."]
+ ],
+ "objcopy:19": [
+  ["Pippo q", "Inizializzazione da risultato", "Il risultato di f() inizializza q. Le copie o move effettive dipendono dalle regole di copy elision e dallo standard utilizzato."],
+  ["g(f())", "Risultato come argomento", "Il risultato di f() viene usato per inizializzare il parametro per valore di g; non dedurre il numero di copie solo dalla sintassi."]
+ ],
+ "objcopy:20": [
+  ["FloatArray(FloatArray&&", "Overload di movimento", "Il parametro rvalue reference permette di selezionare un percorso che trasferisce risorse anziché duplicarne il contenuto."],
+  ["void move", "La sorgente viene modificata", "L’helper riceve un riferimento non const: deve poter azzerare dimensione e puntatore dell’oggetto sorgente."]
+ ],
+ "objcopy:21": [
+  ["delete[] cont", "Rilascia la vecchia destinazione", "Prima di acquisire la risorsa della sorgente si libera quella già posseduta dalla destinazione."],
+  ["cont=a.cont", "Trasferisce l’indirizzo", "Non viene allocato né copiato un nuovo array: la destinazione prende l’indirizzo e la dimensione della sorgente."],
+  ["a.cont=nullptr", "Rende innocua la distruzione", "La sorgente resta vuota, con dimensione zero e puntatore nullo; il suo distruttore non cancellerà l’array trasferito."]
+ ],
+ "objcopy:22": [
+  ["cont(nullptr)", "Destinazione inizialmente vuota", "Nel costruttore il puntatore nullo permette all’helper di eseguire delete[] senza liberare memoria non inizializzata."],
+  ["move(a)", "Un parametro nominato è un lvalue", "Sebbene il parametro sia dichiarato FloatArray&&, l’espressione a è un lvalue. È adatta all’helper move(FloatArray&) definito nella slide precedente."],
+  ["return *this", "Restituisce la destinazione", "Anche l’assegnazione di movimento restituisce FloatArray&. Il commento originale ‘as value’ non descrive correttamente la firma."]
+ ]
+}

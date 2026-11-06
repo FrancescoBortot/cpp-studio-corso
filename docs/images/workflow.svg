@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="310" viewBox="0 0 1200 310" role="img" aria-labelledby="title desc">
+<title id="title">Il percorso di studio in C++ Studio</title><desc id="desc">Dalle slide e spiegazioni al codice compilabile, fino agli appunti e alla sessione personale.</desc>
+<rect width="1200" height="310" rx="18" fill="#f5f3fb"/>
+<text x="42" y="49" fill="#6550a0" font-family="system-ui,sans-serif" font-size="13" letter-spacing="2">C++ STUDIO · LEGGERE, PROVARE, CONSERVARE</text>
+<g fill="#ffffff" stroke="#ddd5ee"><rect x="42" y="84" width="336" height="176" rx="10"/><rect x="432" y="84" width="336" height="176" rx="10"/><rect x="822" y="84" width="336" height="176" rx="10"/></g>
+<g fill="#6550a0" font-family="system-ui,sans-serif" font-size="13"><text x="66" y="119">01 · CAPIRE</text><text x="456" y="119">02 · SPERIMENTARE</text><text x="846" y="119">03 · RIPRENDERE</text></g>
+<g fill="#30283e" font-family="system-ui,sans-serif" font-size="23" font-weight="600"><text x="66" y="161">Slide e spiegazioni</text><text x="456" y="161">Esempi e compilatore</text><text x="846" y="161">Appunti e sessioni</text></g>
+<g fill="#80728d" font-family="system-ui,sans-serif" font-size="15"><text x="66" y="200">Lettura affiancata e commenti</text><text x="66" y="226">sulle righe del codice</text><text x="456" y="200">File modificabili, input</text><text x="456" y="226">ed esecuzione locale reale</text><text x="846" y="200">Note collegate, evidenziazioni</text><text x="846" y="226">e salvataggi trasferibili</text></g>
+<g stroke="#a28cbd" stroke-width="2" fill="none"><path d="M389 173h30m-7-6 7 6-7 6"/><path d="M779 173h30m-7-6 7 6-7 6"/></g>
+</svg>
